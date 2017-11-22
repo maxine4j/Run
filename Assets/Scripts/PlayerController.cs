@@ -14,8 +14,8 @@ public enum MoveState
 
 public class PlayerController : MonoBehaviour
 {
-    public float acceleration = 2f; // left/right movement accelleration
-    public float maxMoveSpeed = 10f; // max left/right speed
+    public float acceleration = 10f; // left/right movement accelleration
+    public float maxMoveSpeed = 15f; // max left/right speed
     public float jumpPower = 40f; // vertical force applied when jumping
     public float failureLine = -500f; // lowest y value player can be before auto resetting
     public float wallJumpPower = 40f; // horizontal force applied when wall jumping
