@@ -14,12 +14,11 @@ public enum MoveState
 
 public class PlayerController : MonoBehaviour
 {
-    public float acceleration = 20f; // left/right movement accelleration
-    public float maxMoveSpeed = 20f; // max left/right speed
-    public float maxVerticalSpeed = 50f; // max up/down speed
-    public float jumpPower = 25f; // vertical force applied when jumping
-    public float failureLine = -50f; // lowest y value player can be before auto resetting
-    public float wallJumpPower = 25f; // horizontal force applied when wall jumping
+    public float acceleration = 2f; // left/right movement accelleration
+    public float maxMoveSpeed = 10f; // max left/right speed
+    public float jumpPower = 40f; // vertical force applied when jumping
+    public float failureLine = -500f; // lowest y value player can be before auto resetting
+    public float wallJumpPower = 40f; // horizontal force applied when wall jumping
     public float wallJumpAngle = 60f; // Angle from x axis for wall jumping
     public Rigidbody rigidBody; // the players physics body
     public Vector3 playerStartPos; // the players starting position, used when resetting player, maybe use this for checkpoints
@@ -87,7 +86,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 Vector3 moveForce = Vector3.right * acceleration;
                 rigidBody.AddForce(moveForce, ForceMode.VelocityChange);
-                rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(rigidBody.velocity.y, -maxVerticalSpeed, maxVerticalSpeed), rigidBody.velocity.z);
+                rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -maxMoveSpeed, maxMoveSpeed), rigidBody.velocity.y, rigidBody.velocity.z);
                 break;
             case MoveState.WallJumping:
                 if (touchingGround)
