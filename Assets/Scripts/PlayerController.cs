@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
             case MoveState.Stopped:
                 break;
             case MoveState.Moving:
+                if (touchingLeft || touchingRight)
+                    break;
                 Vector3 moveForce = Vector3.right * acceleration;
                 rigidBody.AddForce(moveForce, ForceMode.VelocityChange);
                 rigidBody.velocity = new Vector3(Mathf.Clamp(rigidBody.velocity.x, -maxMoveSpeed, maxMoveSpeed), Mathf.Clamp(rigidBody.velocity.y, -maxVerticalSpeed, maxVerticalSpeed), rigidBody.velocity.z);
